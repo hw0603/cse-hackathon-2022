@@ -36,3 +36,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa.hibernate.ddl-auto: create
   sql.init.mode: always
+  data.rest:
+      base-path: /api
+      detection-strategy: annotated
