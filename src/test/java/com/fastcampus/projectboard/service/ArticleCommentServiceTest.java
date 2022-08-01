@@ -124,13 +124,13 @@ class ArticleCommentServiceTest {
         // Given
         Long articleCommentId = 1L;
         String userId = "uno";
-        willDoNothing().given(articleCommentRepository).deleteByIdAndUserAccount_UserId(articleCommentId, userId);
+        willDoNothing().given(articleCommentRepository).deleteById(articleCommentId);
 
         // When
         sut.deleteArticleComment(articleCommentId, userId);
 
         // Then
-        then(articleCommentRepository).should().deleteByIdAndUserAccount_UserId(articleCommentId, userId);
+        then(articleCommentRepository).should().deleteById(articleCommentId);
     }
 
 
