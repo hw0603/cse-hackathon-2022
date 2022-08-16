@@ -10,6 +10,7 @@ import com.fastcampus.projectboard.dto.request.ArticleRequest;
 import com.fastcampus.projectboard.dto.response.ArticleResponse;
 import com.fastcampus.projectboard.service.ArticleService;
 import com.fastcampus.projectboard.service.PaginationService;
+import com.fastcampus.projectboard.util.FormDataEncoder;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
