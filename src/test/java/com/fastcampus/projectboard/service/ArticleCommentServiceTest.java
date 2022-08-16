@@ -57,6 +57,7 @@ class ArticleCommentServiceTest {
         // Given
         ArticleCommentDto dto = createArticleCommentDto("댓글");
         given(articleRepository.getReferenceById(dto.articleId())).willReturn(createArticle());
+        given(userAccountRepository.getReferenceById(dto.userAccountDto().userId())).willReturn(createUserAccount());
         given(articleCommentRepository.save(any(ArticleComment.class))).willReturn(null);
 
         // When
@@ -127,7 +128,7 @@ class ArticleCommentServiceTest {
         willDoNothing().given(articleCommentRepository).deleteById(articleCommentId);
 
         // When
-        sut.deleteArticleComment(articleCommentId, userId);
+        sut.deleteArticleComment(articleCommentId);
 
         // Then
         then(articleCommentRepository).should().deleteById(articleCommentId);
