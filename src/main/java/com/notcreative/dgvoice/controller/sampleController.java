@@ -6,15 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
+
 @RestController
 public class sampleController {
 
     @Autowired
     sampleService service;
 
-    @GetMapping(value="/")
+    @GetMapping(value="/hello")
     @ResponseBody
-    public String helloworld() {
+    public List<String> hello() {
         return service.helloService();
     }
 }
