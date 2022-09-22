@@ -13,7 +13,7 @@ TBD
 TBD
 
 ## 프로젝트에 활용된 기술
-`SpringBoot`, `Thymeleaf`활용 SSR, `React`...
+`SpringBoot`, `React`...
 
 ## 시연 영상
 TBA
