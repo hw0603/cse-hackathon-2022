@@ -1,5 +1,3 @@
-/* 회원가입 컴포넌트 */
-
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -12,6 +10,7 @@ function Join() {
   const [email, setEmail] = useState("");
   const [IP, setIP] = useState("");
   const [addr, setAddr] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const changeId = (event) => {
@@ -58,6 +57,7 @@ function Join() {
   };
 
   const getLocation = async () => {
+    setIsLoading(true);
     const response = await fetch("https://api.ipify.org?format=json");
     const data = await response.json();
     await setIP(data.ip);
@@ -84,6 +84,7 @@ function Join() {
       address[2].long_name
     );
     setAddr([address[3].long_name, address[2].long_name]);
+    setIsLoading(false);
   };
 
   /* 회원가입 */
@@ -94,7 +95,7 @@ function Join() {
       pwd: pwd,
       checkPwd: checkPwd,
       email: email,
-      addr: addr
+      addr: addr,
     };
 
     await axios
@@ -121,12 +122,18 @@ function Join() {
 
   return (
     <div>
-      <table className="table">
+      <table className="table jointable w-60">
         <tbody>
           <tr>
-            <th className="col-2">아이디</th>
+            <th className="align-middle">아이디</th>
             <td>
-              <input type="text" value={id} onChange={changeId} size="50px" />{" "}
+              <input
+                type="text"
+                value={id}
+                onChange={changeId}
+                size="50px"
+                className="input-lg"
+              />
               &nbsp; &nbsp;
               <button
                 className="btn btn-outline-danger"
@@ -138,43 +145,46 @@ function Join() {
           </tr>
 
           <tr>
-            <th>이름</th>
+            <th className="align-middle">이름</th>
             <td>
               <input
                 type="text"
                 value={name}
                 onChange={changeName}
-                size="50px"
+                size="100px"
+                className="input-lg"
               />
             </td>
           </tr>
 
           <tr>
-            <th>비밀번호</th>
+            <th className="align-middle">비밀번호</th>
             <td>
               <input
                 type="password"
                 value={pwd}
                 onChange={changePwd}
-                size="50px"
+                size="100px"
+                className="input-lg"
               />
             </td>
           </tr>
 
           <tr>
-            <th>비밀번호 확인</th>
+            <th className="align-middle">비밀번호 확인</th>
             <td>
               <input
                 type="password"
                 value={checkPwd}
                 onChange={changeCheckPwd}
-                size="50px"
+                size="100px"
+                className="input-lg"
               />
             </td>
           </tr>
 
           <tr>
-            <th>이메일</th>
+            <th className="align-middle">이메일</th>
             <td>
               <input
                 type="text"
@@ -185,16 +195,24 @@ function Join() {
             </td>
           </tr>
           <tr>
-            <th>위치 인증</th>
+            <th className="col-2 align-middle">위치 인증</th>
             <td>
               <button className="btn btn-outline-primary" onClick={getLocation}>
                 위치 인증하기
               </button>
               &nbsp; &nbsp;
-              {addr ? <span className="badge badge-success">
-                <i className="fas fa-check" />&nbsp;<span>{addr[0]} {addr[1]}</span>
-              </span> : null}
-              
+              {!isLoading && addr ? (
+                <span className="badge badge-success">
+                  <i className="fas fa-check" />
+                  &nbsp;
+                  <span>
+                    {addr[0]} {addr[1]}
+                  </span>
+                </span>
+              ) : null}
+              {isLoading ? (
+                <span className="h6">위치 정보 가져오는 중...</span>
+              ) : null}
             </td>
           </tr>
         </tbody>

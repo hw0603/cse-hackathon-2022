@@ -58,7 +58,7 @@ function Login() {
 
 	return (
 		<div>
-			<table className="table">
+			<table className="logintable w-30">
 				<tbody>
 					<tr>
 						<th className="col-3">아이디</th>
