@@ -151,7 +151,7 @@ function BbsList() {
         </table>
         <br />
 
-        <table className="table table-hover">
+        <table className="table table-hover text-center bbstable">
           <thead>
             <tr>
               <th className="col-md-1">번호</th>
@@ -166,7 +166,10 @@ function BbsList() {
           </thead>
 
           <tbody>
-            {bbsList.map(function (bbs, idx) {
+            {/* {bbsList.map(function (bbs, idx) {
+              return <TableRow obj={bbs} key={idx} cnt={idx + 1} />;
+            })} */}
+            {articleList.map(function (bbs, idx) {
               return <TableRow obj={bbs} key={idx} cnt={idx + 1} />;
             })}
           </tbody>
@@ -195,22 +198,28 @@ function BbsList() {
 
 function TableRow(props) {
   const bbs = props.obj;
+  console.log(bbs);
 
   return (
     <tr>
-      <th>{props.cnt}</th>
+      <th className="align-middle">{props.cnt}</th>
       {
         <>
-          <td>
-            <Arrow depth={bbs.depth}></Arrow> &nbsp; {/* 답글 화살표 */}
-            <Link to={{ pathname: `/bbsdetail/${bbs.seq}` }}>
+          <td id="bbsTitle" className="align-middle">
+            {/* <Arrow depth={bbs.depth}></Arrow> &nbsp; 답글 화살표 */}
+            <Link to={{ pathname: `/bbsdetail/${bbs.id}` }}>
               {" "}
               {/* 게시글 상세 링크 */}
-              <span className="underline bbs-title">{bbs.title} </span>{" "}
+              <span className="underline">{bbs.title} </span>{" "}
               {/* 게시글 제목 */}
             </Link>
           </td>
-          <td>{bbs.id}</td>
+          <td className="align-middle">글쓴이</td>
+          <td className="align-middle">{bbs.cities.main_city}<br />{bbs.cities.sub_city}</td>
+          <td className="align-middle">{bbs.category}</td>
+          <td className="align-middle">{bbs.date}</td>
+          <td className="align-middle">{0}</td>
+          <td className="align-middle">{0}</td>
         </>
       }
     </tr>

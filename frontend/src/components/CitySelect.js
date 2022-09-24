@@ -182,45 +182,45 @@ export default function CitySelect() {
     var sub = document.getElementById("sub_city");
     var tmp;
     switch (e.target.value) {
-      case "entire":
+      case "전체":
         sub.disabled = true;
         break;
-      case "junggu":
+      case "중구":
         sub.disabled = false;
         tmp = sub_junggu;
         break;
 
-      case "donggu":
+      case "동구":
         sub.disabled = false;
         tmp = sub_donggu;
         break;
 
-      case "seogu":
+      case "서구":
         sub.disabled = false;
         tmp = sub_seogu;
         break;
 
-      case "namgu":
+      case "남구":
         sub.disabled = false;
         tmp = sub_namgu;
         break;
 
-      case "bukgu":
+      case "북구":
         sub.disabled = false;
         tmp = sub_bukgu;
         break;
 
-      case "suseonggu":
+      case "수성구":
         sub.disabled = false;
         tmp = sub_suseonggu;
         break;
 
-      case "dalseogu":
+      case "달서구":
         sub.disabled = false;
         tmp = sub_dalseogu;
         break;
 
-      case "dalseonggun":
+      case "달성군":
         sub.disabled = false;
         tmp = sub_dalseonggun;
         break;
@@ -246,15 +246,15 @@ export default function CitySelect() {
     <>
       <SelectBox name="main_city" id="main_city" onChange={categoryChange} className="rounded">
         <option value="">구/군 선택</option>
-        <option value="entire">전체</option>
-        <option value="junggu">중구</option>
-        <option value="donggu">동구</option>
-        <option value="seogu">서구</option>
-        <option value="namgu">남구</option>
-        <option value="bukgu">북구</option>
-        <option value="suseonggu">수성구</option>
-        <option value="dalseogu">달서구</option>
-        <option value="dalseonggun">달성군</option>
+        <option value="전체">전체</option>
+        <option value="중구">중구</option>
+        <option value="동구">동구</option>
+        <option value="서구">서구</option>
+        <option value="남구">남구</option>
+        <option value="북구">북구</option>
+        <option value="수성구">수성구</option>
+        <option value="달서구">달서구</option>
+        <option value="달성군">달성군</option>
       </SelectBox>
 
       <SelectBox name="sub_city" id="sub_city" onChange={changeCity} className="rounded">

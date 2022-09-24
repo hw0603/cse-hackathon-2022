@@ -12,7 +12,26 @@ import Nav from "./components/app/Nav";
 export const Appcontext = createContext();
 
 export default function App() {
-  const [articleList, setArticleList] = useState([]);
+  const [articleList, setArticleList] = useState([
+    {
+      id: 0,
+      title: "제목1",
+      content: "본문1입니다.",
+      date: "22-09-24",
+      cities: {
+        main_city: "달서구", 
+        sub_city: "용산1동"},
+      category: "교통"
+    }, {
+      id: 1,
+      title: "제목2",
+      content: "본문2입니다.",
+      date: "22-09-24",
+      cities: {
+        main_city: "달서구", 
+        sub_city: "두류동"},
+      category: "주거"
+    }]);
   const [user, setUser] = useState(null);
   const [cities, setCities] = useState({
     main_city: "",

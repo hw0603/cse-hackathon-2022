@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { Appcontext } from "../../App";
+import App, { Appcontext } from "../../App";
 import CitySelect from "../CitySelect";
 import CategorySelect from "../CategorySelect";
 import { useNavigate } from "react-router";
@@ -26,12 +26,14 @@ const TitleInput = styled.input`
 export default function BbsWrite() {
   const { auth, setAuth } = useContext(AuthContext);
   const { headers, setHeaders } = useContext(HttpHeadersContext);
+  const { articleList, setArticleList } = useContext(Appcontext);
 
   const { cities, category } = useContext(Appcontext);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [todayString, setTodayString] = useState("");
   const navigate = useNavigate();
+
+  const [curID, setCurID] = useState(1);
 
   function dateFormat(date) {
     let month = date.getMonth() + 1;
@@ -63,20 +65,28 @@ export default function BbsWrite() {
   };
 
   const handleSubmit = async () => {
-    if (checkContentsFilled()) createBbs();
+    if (checkContentsFilled()) {
+      const today = new Date();
+      const dayString = dateFormat(today);
+      console.log(dayString);
+      createBbs();
+    }
   };
 
   const createBbs = async () => {
     const today = new Date();
-    setTodayString(dateFormat(today));
+    const dayString = dateFormat(today);
     const req = {
-      id: localStorage.getItem("id"),
+      id: curID,
       title: title,
       content: stringToHTML(content).querySelector("p").innerText,
-      date: todayString,
+      date: dayString,
       cities: cities,
       category: category,
     };
+    await setArticleList([...articleList, req]);
+    await console.log(articleList);
+    setCurID(curID + 1);
 
     await axios
       .post("http://localhost:3000/bbs", req, { headers: headers })
