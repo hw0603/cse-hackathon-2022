@@ -9,7 +9,7 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/board
+    url: jdbc:mysql://localhost:3306/dgvoice
     username: administorator
     password: thisisTESTpw!#%&
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -34,7 +34,7 @@ spring:
   datasource:
     url: ${JAWSDB_URL}
     driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa.hibernate.ddl-auto: create
+  jpa.hibernate.ddl-auto: create-drop
   sql.init.mode: always
   data.rest:
       base-path: /api
