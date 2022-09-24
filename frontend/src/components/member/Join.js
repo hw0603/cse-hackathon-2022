@@ -55,22 +55,6 @@ function Join() {
           alert(resp.data);
         }
       });
-    // try {
-    //   const response = await fetch("http://localhost:3000/user", {
-    //     params: { id: id },
-    //   });
-    //   const json = await response.json();
-
-    //   console.log(response);
-    //   console.log(json);
-
-    //   if (response.ok) {
-    //     alert("사용 가능한 아이디입니다.");
-    //   }
-    // } catch (err) {
-    //   console.log("error :(");
-    //   console.error(err);
-    // }
   };
 
   const getLocation = async () => {
@@ -101,11 +85,6 @@ function Join() {
     );
     setAddr([address[3].long_name, address[2].long_name]);
   };
-
-  // const getIP = async () => {
-
-  //   setIP(data.ip);
-  // }
 
   /* 회원가입 */
   const join = async () => {
