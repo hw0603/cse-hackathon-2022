@@ -8,7 +8,7 @@
         <attr sel="#nickname" th:text="*{nickname}" />
         <attr sel="#email" th:text="*{email}" />
         <attr sel="#created-at" th:datetime="*{createdAt}" th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm:ss')}" />
-        <attr sel="#hashtag" th:text="*{hashtag}" />
+        <attr sel="#region" th:text="*{region}" />
         <attr sel="#article-content/pre" th:text="*{content}" />
 
         <attr sel="#article-buttons" th:if="${#authorization.expression('isAuthenticated()')} and *{userId} == ${#authentication.name}">

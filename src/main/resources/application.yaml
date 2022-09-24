@@ -3,14 +3,14 @@ management.endpoints.web.exposure.include: "*"
 
 logging:
   level:
-    com.fastcampus.projectboard: debug
+    com.notcreative.dgvoice: debug
     org.springframework.web.servlet: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/board
-    username: jiyun
+    username: administorator
     password: thisisTESTpw!#%&
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
