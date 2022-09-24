@@ -34,10 +34,10 @@ function Nav() {
               </div>
 
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <Link className="dropdown-item" to="/forumview">
+                <Link className="dropdown-item" to="/bbslist">
                   글목록
                 </Link>
-                <Link className="dropdown-item" to="/forumwrite">
+                <Link className="dropdown-item" to="/bbswrite">
                   글추가
                 </Link>
               </div>
