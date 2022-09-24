@@ -1,41 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
-import {useEffect, useState} from "react";
+import React, { useState, createContext } from "react";
+import { BrowserRouter } from "react-router-dom";
+import "./App.css";
 
-function App() {
-  const [message, setMessage] = useState([]);
+import AuthProvider from "./components/context/AuthProvider";
+import HttpHeadersProvider from "./components/context/HttpHeadersProvider";
 
-  useEffect(() => {
-    fetch("/hello", {method: "GET"})
-        .then((response) => {
-          return response.json();
-        })
-        .then(function (data) {
-          setMessage(data);
-        });
-  }, []);
+import Header from "./components/app/Header";
+import Main from "./components/app/Main";
+import Nav from "./components/app/Nav";
+
+export const Appcontext = createContext();
+
+export default function App() {
+  const [articleList, setArticleList] = useState([]);
+  const [user, setUser] = useState(null);
+  const [cities, setCities] = useState({
+    main_city: "",
+    sub_city: "",
+  });
+  const [category, setCategories] = useState("");
+  const value = { articleList, setArticleList, cities, setCities, category, setCategories };
 
   return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <ul>
-            {message.map((text, index) => <li key={`${index}-${text}`}>{text}</li>)}
-          </ul>
-        </header>
-      </div>
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+
+        <Appcontext.Provider value={value}>
+          <AuthProvider>
+            <HttpHeadersProvider>
+            <Nav />
+            <Main />
+            </HttpHeadersProvider>
+
+          </AuthProvider>
+        </Appcontext.Provider>
+
+      </BrowserRouter>
+    </div>
   );
 }
-
-export default App;
