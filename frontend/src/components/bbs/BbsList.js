@@ -3,6 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Appcontext } from "../../App";
 import Pagination from "react-js-pagination";
+import CitySelect from "../CitySelect";
+import CategorySelect from "../CategorySelect";
+import styled from "styled-components";
+
+const SelectBox = styled.select`
+  display: inline-block;
+  height: 2rem;
+  width: 10rem;
+  margin-right: 5px;
+`;
 
 function BbsList() {
   const { articleList } = useContext(Appcontext);
@@ -70,17 +80,53 @@ function BbsList() {
         <table className="search">
           <tbody>
             <tr>
-              <td>
-                <select
+              
+            <td>
+                {/* <select
                   className="custom-select"
                   value={choiceVal}
                   onChange={changeChoice}
                 >
                   <option>검색 옵션 선택</option>
                   <option value="title">제목</option>
-                  <option value="content">내용</option>
-                  <option value="writer">작성자</option>
-                </select>
+                  <option value="title_content">제목+내용</option>
+                </select> */}
+                <CategorySelect className="rounded" />
+              </td>
+              <td>
+                {/* <select
+                  className="custom-select"
+                  value={choiceVal}
+                  onChange={changeChoice}
+                >
+                  <option>구 선택</option>
+                  <option value="title">제목</option>
+                  <option value="title_content">제목+내용</option>
+                </select> */}
+                <CitySelect className="rounded" />
+              </td>
+
+            </tr>
+            <tr>
+              <td>
+                {/* <select
+                  className="custom-select"
+                  value={choiceVal}
+                  onChange={changeChoice}
+                >
+                  <option>검색 옵션 선택</option>
+                  <option value="title">제목</option>
+                  <option value="title_content">제목+내용</option>
+                </select> */}
+                <SelectBox
+                  value={choiceVal}
+                  onChange={changeChoice}
+                  className="rounded"
+                >
+                  <option>검색 옵션 선택</option>
+                  <option value="title">제목</option>
+                  <option value="title_content">제목+내용</option>
+                </SelectBox>
               </td>
               <td>
                 <input
@@ -108,16 +154,14 @@ function BbsList() {
         <table className="table table-hover">
           <thead>
             <tr>
-              <th className="col-1">번호</th>
-              <th className="col-6">제목</th>
-              <th className="col-1">글쓴이</th>
-              <th className="col-1">지역</th>
-              <th className="col-0.5">카테고리</th>
-              <th className="col-1">작성일</th>
-              <th className="col-0.5">공감</th>
-              <th className="col-0.5">조회수</th>
-              
-              
+              <th className="col-md-1">번호</th>
+              <th className="col-md-5">제목</th>
+              <th className="col-md-1">글쓴이</th>
+              <th className="col-md-1">지역</th>
+              <th className="col-md-1">업무</th>
+              <th className="col-md-1">작성일</th>
+              <th className="col-md-1">조회수</th>
+              <th className="col-md-1">공감</th>
             </tr>
           </thead>
 
@@ -128,8 +172,8 @@ function BbsList() {
           </tbody>
         </table>
 
-        <Pagination
-          className="pagination"
+        <Pagination 
+          className="pagination justify-content-center"
           activePage={page}
           itemsCountPerPage={10}
           totalItemsCount={totalCnt}
@@ -139,7 +183,7 @@ function BbsList() {
           onChange={changePage}
         />
 
-        <div className="my-5 d-flex justify-content-center">
+        <div className="my-5 d-flex justify-content-left">
           <Link className="btn btn-outline-secondary" to="/bbswrite">
             <i className="fas fa-pen"></i> &nbsp; 글쓰기
           </Link>

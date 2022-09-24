@@ -3,9 +3,10 @@ import { Appcontext } from "../App";
 import styled from "styled-components";
 
 const SelectBox = styled.select`
-  display: inline-block;
+  display:inline-block;
   height: 2rem;
   width: 10rem;
+  margin-right: 5px;
 `;
 
 var sub_junggu = [
@@ -229,7 +230,7 @@ export default function CitySelect() {
     }
     sub.options.length = 0;
     var o = document.createElement("option");
-    o.value = "null";
+    o.value = "";
     o.innerHTML = "읍/면/동 선택";
     sub.appendChild(o);
 
@@ -243,8 +244,8 @@ export default function CitySelect() {
 
   return (
     <>
-      <SelectBox name="main_city" id="main_city" onChange={categoryChange}>
-        <option value="null">구/군 선택</option>
+      <SelectBox name="main_city" id="main_city" onChange={categoryChange} className="rounded">
+        <option value="">구/군 선택</option>
         <option value="entire">전체</option>
         <option value="junggu">중구</option>
         <option value="donggu">동구</option>
@@ -256,8 +257,8 @@ export default function CitySelect() {
         <option value="dalseonggun">달성군</option>
       </SelectBox>
 
-      <SelectBox name="sub_city" id="sub_city" onChange={changeCity}>
-        <option value="null">읍/면/동 선택</option>
+      <SelectBox name="sub_city" id="sub_city" onChange={changeCity} className="rounded">
+        <option value="">읍/면/동 선택</option>
       </SelectBox>
     </>
   );
