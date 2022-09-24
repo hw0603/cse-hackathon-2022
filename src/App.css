@@ -1,0 +1,23 @@
+.App{
+    min-width: 1020px;
+    /* background: skyblue; */
+    margin: 0;
+    padding: 0;
+}
+
+/* h1 {
+    margin: 0;
+} */
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+    min-height: 300px;
+    margin-bottom: 20px;
+}
+
+.articleListItem {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
