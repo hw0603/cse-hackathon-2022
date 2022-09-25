@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="dgvoice@localhost" uuid="58724e48-e771-4df8-abcd-0f7f52c88bb0">
+    <data-source source="LOCAL" name="board@localhost" uuid="dfc4909c-3267-48bf-9ae5-01f5a28d77ea">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <remarks>local db</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/dgvoice</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/board</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

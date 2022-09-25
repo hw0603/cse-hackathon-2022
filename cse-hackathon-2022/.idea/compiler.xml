@@ -6,7 +6,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
-          <entry name="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.7.4/444e3980bdda8429a5055c9d55881dd66a61c85e/spring-boot-configuration-processor-2.7.4.jar" />
+          <entry name="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.7.0/d8b66c3d68ff21cb10bb908cd873c4a6ecd8880f/spring-boot-configuration-processor-2.7.0.jar" />
           <entry name="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.querydsl/querydsl-apt/5.0.0/3c212d03cc42b5297f62bd22e37b737812245085/querydsl-apt-5.0.0-jpa.jar" />
           <entry name="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/jakarta.annotation/jakarta.annotation-api/1.3.5/59eb84ee0d616332ff44aba065f3888cf002cd2d/jakarta.annotation-api-1.3.5.jar" />
           <entry name="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/jakarta.persistence/jakarta.persistence-api/2.2.3/8f6ea5daedc614f07a3654a455660145286f024e/jakarta.persistence-api-2.2.3.jar" />
