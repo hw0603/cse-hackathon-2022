@@ -7,6 +7,7 @@ function Join() {
   const [name, setName] = useState("");
   const [pwd, setPwd] = useState("");
   const [checkPwd, setCheckPwd] = useState("");
+  const [isIdDupChecked, setIsIdDupChecked] = useState(false);
   const [isPwdSame, setIsPwdSame] = useState(false);
   const [email, setEmail] = useState("");
   const [IP, setIP] = useState("");
@@ -24,7 +25,6 @@ function Join() {
 
   const changePwd = (event) => {
     setPwd(event.target.value);
-    
   };
 
   const changeCheckPwd = (event) => {
@@ -47,6 +47,7 @@ function Join() {
 
         if (resp.status == 200) {
           alert("사용 가능한 아이디입니다.");
+          setIsIdDupChecked(true);
         }
       })
       .catch((err) => {
@@ -66,7 +67,6 @@ function Join() {
     const data = await response.json();
     await setIP(data.ip);
 
-    const url = await `http://ip-api.com/json/${IP}`;
     const locationResponse = await fetch(`http://ip-api.com/json/${IP}`);
     const loc = await locationResponse.json();
 
@@ -91,43 +91,74 @@ function Join() {
     setIsLoading(false);
   };
 
+  const checkContentsFilled = () => {
+    if (name === "") alert("별명을 입력하세요.");
+    else if (id === "") alert("아이디를 입력하세요.");
+    else if (pwd === "") alert("비밀번호를 입력하세요.");
+    else if (email === "") alert("이메일을 입력하세요.");
+    else if (addr === "") alert("'위치 인증' 버튼을 클릭해 위치를 확인하세요.");
+    else if (isPwdSame === false)
+      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+    else if (isIdDupChecked === false) alert("아이디 중복 확인을 해주세요.");
+    else return true;
+
+    return false;
+  };
+
   /* 회원가입 */
   const join = async () => {
-    const req = {
-      id: id,
-      name: name,
-      pwd: pwd,
-      checkPwd: checkPwd,
-      email: email,
-      addr: addr,
-    };
+    if (checkContentsFilled()) {
+      if (window.confirm("회원가입 하시겠습니까?")) {
+        const req = {
+          id: id,
+          name: name,
+          pwd: pwd,
+          checkPwd: checkPwd,
+          email: email,
+          addr: addr,
+        };
 
-    await axios
-      .post("http://localhost:3000/user/join", req)
-      .then((resp) => {
-        console.log("[Join.js] join() success :D");
-        console.log(resp.data);
+        await axios
+          .post("http://localhost:3000/user/join", req)
+          .then((resp) => {
+            console.log("[Join.js] join() success :D");
+            console.log(resp.data);
 
-        alert(resp.data.id + "님 회원가입을 축하드립니다 🎊");
-        navigate("/login");
-      })
-      .catch((err) => {
-        console.log("[Join.js] join() error :<");
-        console.log(err);
+            alert(resp.data.id + "님 회원가입을 축하드립니다 🎊");
+            navigate("/login");
+          })
+          .catch((err) => {
+            console.log("[Join.js] join() error :<");
+            console.log(err);
 
-        // alert(err.response.data);
+            // alert(err.response.data);
 
-        const resp = err.response;
-        if (resp.status == 400) {
-          alert(resp.data);
-        }
-      });
+            const resp = err.response;
+            if (resp.status == 400) {
+              alert(resp.data);
+            }
+          });
+      }
+    }
   };
 
   return (
     <div>
       <table className="table jointable w-60">
         <tbody>
+          <tr>
+            <th className="align-middle">별명</th>
+            <td>
+              <input
+                type="text"
+                value={name}
+                onChange={changeName}
+                size="100px"
+                className="input-lg"
+              />
+            </td>
+          </tr>
+
           <tr>
             <th className="align-middle">아이디</th>
             <td>
@@ -145,19 +176,6 @@ function Join() {
               >
                 <i className="fas fa-check"></i> 아이디 중복 확인
               </button>
-            </td>
-          </tr>
-
-          <tr>
-            <th className="align-middle">이름</th>
-            <td>
-              <input
-                type="text"
-                value={name}
-                onChange={changeName}
-                size="100px"
-                className="input-lg"
-              />
             </td>
           </tr>
 
@@ -185,16 +203,18 @@ function Join() {
                 className="input-lg"
               />
               &nbsp;
-              {checkPwd !== "" ? isPwdSame ? (
-                <span class="badge badge-success">
-                  <i className="fas fa-check" />
-                  비밀번호가 일치합니다.
-                </span>
-              ) : (
-                <span className="badge badge-danger my-auto">
-                  <i className="fas fa-exclamation-triangle" />
-                  &nbsp; 비밀번호가 일치하지 않습니다.
-                </span>
+              {checkPwd !== "" ? (
+                isPwdSame ? (
+                  <span class="badge badge-success">
+                    <i className="fas fa-check" />
+                    비밀번호가 일치합니다.
+                  </span>
+                ) : (
+                  <span className="badge badge-danger my-auto">
+                    <i className="fas fa-exclamation-triangle" />
+                    &nbsp; 비밀번호가 일치하지 않습니다.
+                  </span>
+                )
               ) : null}
               {/* {isPwdSame ? (
                 <span class="badge badge-success">
