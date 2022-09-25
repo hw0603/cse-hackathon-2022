@@ -65,12 +65,17 @@ export default function BbsWrite() {
   };
 
   const handleSubmit = async () => {
-    if (checkContentsFilled()) {
-      const today = new Date();
-      const dayString = dateFormat(today);
-      console.log(dayString);
-      createBbs();
+    if (window.confirm("글을 등록하시겠습니까?")) {
+      if (checkContentsFilled()) {
+        const today = new Date();
+        const dayString = dateFormat(today);
+        console.log(dayString);
+        createBbs();
+      }
+    } else {
+      console.log("취소");
     }
+    
   };
 
   const createBbs = async () => {

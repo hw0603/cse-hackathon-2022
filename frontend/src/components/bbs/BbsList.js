@@ -21,7 +21,8 @@ function BbsList() {
   // 검색용 Hook
   const [choiceVal, setChoiceVal] = useState("");
   const [searchVal, setSearchVal] = useState("");
-
+  const { cities, setCities } = useContext(Appcontext);
+  const { category, setCategories } = useContext(Appcontext);
   // Paging
   const [page, setPage] = useState(1);
   const [totalCnt, setTotalCnt] = useState(0);
@@ -30,9 +31,10 @@ function BbsList() {
   let navigate = useNavigate();
 
   const getBbsList = async (choice, search, page) => {
+    console.log(cities, category, choice, search);
     await axios
       .get("http://localhost:3000/bbs", {
-        params: { choice: choice, search: search, page: page },
+        params: { cities: cities, category: category, choice: choice, search: search, page: page },
       })
       .then((resp) => {
         console.log("[BbsList.js] useEffect() success :D");
@@ -42,13 +44,15 @@ function BbsList() {
         setTotalCnt(resp.data.pageCnt);
       })
       .catch((err) => {
-        console.log("[BbsList.js] useEffect() error :<");
-        console.log(err);
+        // console.log("[BbsList.js] useEffect() error :<");
+        // console.log(err);
       });
   };
 
   useEffect(() => {
     getBbsList("", "", 1);
+    setCities("");
+    setCategories("");
   }, []);
 
   const changeChoice = (event) => {
@@ -80,8 +84,7 @@ function BbsList() {
         <table className="search">
           <tbody>
             <tr>
-              
-            <td>
+              <td>
                 {/* <select
                   className="custom-select"
                   value={choiceVal}
@@ -105,7 +108,6 @@ function BbsList() {
                 </select> */}
                 <CitySelect className="rounded" />
               </td>
-
             </tr>
             <tr>
               <td>
@@ -175,7 +177,7 @@ function BbsList() {
           </tbody>
         </table>
 
-        <Pagination 
+        <Pagination
           className="pagination justify-content-center"
           activePage={page}
           itemsCountPerPage={10}
@@ -198,7 +200,6 @@ function BbsList() {
 
 function TableRow(props) {
   const bbs = props.obj;
-  console.log(bbs);
 
   return (
     <tr>
@@ -215,7 +216,11 @@ function TableRow(props) {
             </Link>
           </td>
           <td className="align-middle">글쓴이</td>
-          <td className="align-middle">{bbs.cities.main_city}<br />{bbs.cities.sub_city}</td>
+          <td className="align-middle">
+            {bbs.cities.main_city}
+            <br />
+            {bbs.cities.sub_city}
+          </td>
           <td className="align-middle">{bbs.category}</td>
           <td className="align-middle">{bbs.date}</td>
           <td className="align-middle">{0}</td>

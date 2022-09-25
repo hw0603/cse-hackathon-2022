@@ -49,6 +49,49 @@ function BbsDetail() {
       });
   };
 
+
+  const thumbUp = async () => {
+    console.log("공감");
+    if (window.confirm("공감하시겠습니까?")) {
+      await axios
+      .get("http://localhost:3000/bbs", { params: { type: "up" } })
+      .then((resp) => {
+        console.log("[BbsDeatil.js] thumbUp() success");
+        console.log(resp.data);
+      })
+      .catch((err) => {
+        console.log("[BbsDeatil.js] thumbUp() error");
+        console.log(err);
+
+        const resp = err.response;
+        if (resp.status == 400) {
+          alert(resp.data);
+        }
+      });
+    }
+  }
+  
+  const thumbDown = async () => {
+    console.log("반대");
+    if (window.confirm("반대하시겠습니까?")) {
+      await axios
+      .get("http://localhost:3000/bbs", { params: { type: "down" } })
+      .then((resp) => {
+        console.log("[BbsDeatil.js] thumbDown() success");
+        console.log(resp.data);
+      })
+      .catch((err) => {
+        console.log("[BbsDeatil.js] thumbDown() error");
+        console.log(err);
+
+        const resp = err.response;
+        if (resp.status == 400) {
+          alert(resp.data);
+        }
+      });
+    }
+  }
+
   useEffect(() => {
     getBbsDetail();
   }, []);
@@ -127,11 +170,11 @@ function BbsDetail() {
       </table>
       <div className="border-bottom bbsContent p-3 mb-4">내용</div>
       <div className="text-center">
-        <button type="button" className="btn btn-primary btn-lg">
+        <button type="button" className="btn btn-primary btn-lg" onClick={thumbUp}>
           공감하기
         </button>{" "}
         &nbsp;
-        <button type="button" className="btn btn-danger btn-lg">
+        <button type="button" className="btn btn-danger btn-lg" onClick={thumbDown}>
           반대하기
         </button>
       </div>
