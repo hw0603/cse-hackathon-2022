@@ -22,7 +22,19 @@
 본 플랫폼이 자리를 잡고 잘 운영된다면, 지자체와 시민 의견의 간극을 메우고 지속적으로 정책 수립이나 민원 처리를 개선해 나가는 과정 속에서, 대구광역시는 시민들의 사소한 의견 하나하나를 소중하게 생각하고 시민들이 그것을 체감할 수 있는 살기 좋은 도시로 거듭날 것으로 기대됩니다.
 
 ## 프로젝트에 활용된 기술
-`SpringBoot`, `React`...
+### 프론트 엔드
+UI 설계를 위한 Javascript 라이브러리인 `React`를 사용해서 대부분의 설계를 구현하였습니다.
+- `React` 내부에서는 `useContext`, `useState`, `useEffect` 등 유용하게 사용할 수 있는 Hook을 사용하였습니다.
+- `SPA (Single Page Application)` 구현을 위해 `react-router-dom`을 사용하였고, 내부 기능인 `BrowerRouter`, `Routes`, `Route`, `Link` 등을 사용해, 애플리케이션 사용 시 로딩을 줄여 편의성을 높였습니다.
+
+서버와의 통신에는 `axios`를 사용하였고 로그인 정보를 `JWT (JSON Web Token)`으로 관리합니다.
+
+`Bootstrap`을 이용해 `margin`, `padding`, `display`, 또는 버튼 디자인, 테이블 디자인 등의 사소한 CSS 적용사항들을 편리하게 적용하였고, `Font awesome`을 이용해 간단한 아이콘들을 삽입하였습니다.
+
+회원가입 시 사용자의 IP를 기반으로 추출한 사용자의 위도/경도와 구글 맵 API를 활용해 위치를 추적하여, 사용자의 위치를 얻을 수 있습니다.
+
+### 백 엔드
+`SpringBoot`, etc...
 
 ## 시연 영상
 TBA
