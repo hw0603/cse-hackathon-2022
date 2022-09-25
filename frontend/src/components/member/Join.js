@@ -7,6 +7,7 @@ function Join() {
   const [name, setName] = useState("");
   const [pwd, setPwd] = useState("");
   const [checkPwd, setCheckPwd] = useState("");
+  const [isPwdSame, setIsPwdSame] = useState(false);
   const [email, setEmail] = useState("");
   const [IP, setIP] = useState("");
   const [addr, setAddr] = useState("");
@@ -23,10 +24,13 @@ function Join() {
 
   const changePwd = (event) => {
     setPwd(event.target.value);
+    
   };
 
   const changeCheckPwd = (event) => {
     setCheckPwd(event.target.value);
+    if (pwd === event.target.value) setIsPwdSame(true);
+    else setIsPwdSame(false);
   };
 
   const changeEmail = (event) => {
@@ -171,8 +175,8 @@ function Join() {
           </tr>
 
           <tr>
-            <th className="align-middle">비밀번호 확인</th>
-            <td>
+            <th className="align-middle ">비밀번호 확인</th>
+            <td className="my-auto">
               <input
                 type="password"
                 value={checkPwd}
@@ -180,6 +184,29 @@ function Join() {
                 size="100px"
                 className="input-lg"
               />
+              &nbsp;
+              {checkPwd !== "" ? isPwdSame ? (
+                <span class="badge badge-success">
+                  <i className="fas fa-check" />
+                  비밀번호가 일치합니다.
+                </span>
+              ) : (
+                <span className="badge badge-danger my-auto">
+                  <i className="fas fa-exclamation-triangle" />
+                  &nbsp; 비밀번호가 일치하지 않습니다.
+                </span>
+              ) : null}
+              {/* {isPwdSame ? (
+                <span class="badge badge-success">
+                  <i className="fas fa-check" />
+                  비밀번호가 일치합니다.
+                </span>
+              ) : (
+                <span className="badge badge-danger my-auto">
+                  <i className="fas fa-exclamation-triangle" />
+                  &nbsp; 비밀번호가 일치하지 않습니다.
+                </span>
+              )} */}
             </td>
           </tr>
 
