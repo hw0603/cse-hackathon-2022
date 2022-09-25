@@ -17,7 +17,6 @@
 이에 대구형 위치 기반 제언 관리 시스템을 구축하여 대구 시민의 직접적인 의견 공유와 제언 작성을 장려하고, 해당 제언들을 지자체에서 간편하게 수합하고 처리할 수 있는 장을 마련하여 궁극적으로 시민 전체의 삶의 질 향상에 발돋움하고자 합니다.  
   
 <img width="1366" alt="image" src="https://user-images.githubusercontent.com/31981462/192132083-13868aef-c18a-4878-a305-07947c90c9f8.png">
-
   
 <img width="1366" alt="image" src="https://user-images.githubusercontent.com/31981462/192131994-e367812b-d315-4448-bae0-354e3973d4c5.png">
   
@@ -30,6 +29,8 @@
 본 플랫폼이 자리를 잡고 잘 운영된다면, 지자체와 시민 의견의 간극을 메우고 지속적으로 정책 수립이나 민원 처리를 개선해 나가는 과정 속에서, 대구광역시는 시민들의 사소한 의견 하나하나를 소중하게 생각하고 시민들이 그것을 체감할 수 있는 살기 좋은 도시로 거듭날 것으로 기대됩니다.
 
 ## 프로젝트에 활용된 기술
+<img width="1366" alt="image" src="https://user-images.githubusercontent.com/31981462/192133132-dfd8db5a-d2af-4ea9-8481-0d85f665b0ad.png">
+
 ### 프론트 엔드
 UI 설계를 위한 Javascript 라이브러리인 `React`를 사용해서 대부분의 설계를 구현하였습니다.
 - `React` 내부에서는 `useContext`, `useState`, `useEffect` 등 유용하게 사용할 수 있는 Hook을 사용하였습니다.
@@ -42,7 +43,19 @@ UI 설계를 위한 Javascript 라이브러리인 `React`를 사용해서 대부
 회원가입 시 사용자의 IP를 기반으로 추출한 사용자의 위도/경도와 구글 맵 API를 활용해 위치를 추적하여, 사용자의 위치를 얻을 수 있습니다.
 
 ### 백 엔드
-`SpringBoot`, etc...
+Spring Boot
+- Spring Boot Actuator
+- Spring Web
+- Spring Data JPA
+- Rest Repositories
+- Rest Repositories HAL Explorer
+- Thymeleaf
+- Spring Security
+- H2 Database
+- MySQL Driver
+- Lombok
+- Spring Boot DevTools
+- Spring Configuration Processor
 
 ## 시연 영상
 TBA
