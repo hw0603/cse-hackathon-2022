@@ -61,4 +61,4 @@ Spring Boot
 - Spring Configuration Processor
 
 ## 시연 영상
-TBA
+유튜브 링크(https://youtu.be/N1TDp40lNv0).
